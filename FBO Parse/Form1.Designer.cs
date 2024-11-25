@@ -101,7 +101,7 @@
             button1.FlatAppearance.MouseDownBackColor = Color.Silver;
             button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 224, 224);
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("나눔스퀘어라운드 Regular", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Font = new Font("나눔스퀘어라운드 Bold", 16F, FontStyle.Bold, GraphicsUnit.Point);
             button1.Location = new Point(12, 349);
             button1.Name = "button1";
             button1.Size = new Size(760, 50);

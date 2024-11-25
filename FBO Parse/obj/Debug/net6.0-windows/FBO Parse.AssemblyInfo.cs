@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FBO Parse")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+79cd2b93937cd10a02be0884a756b0e3c91dff8f")]
 [assembly: System.Reflection.AssemblyProductAttribute("FBO Parse")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FBO Parse")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -27,14 +27,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Form1.cs [Design]",
+              "Title": "Form1.cs [\uB514\uC790\uC778]",
               "DocumentMoniker": "E:\\programming\\repos\\FBO-Parse\\FBO Parse\\Form1.cs",
               "RelativeDocumentMoniker": "FBO Parse\\Form1.cs",
-              "ToolTip": "E:\\programming\\repos\\FBO-Parse\\FBO Parse\\Form1.cs [Design]",
-              "RelativeToolTip": "FBO Parse\\Form1.cs [Design]",
+              "ToolTip": "E:\\programming\\repos\\FBO-Parse\\FBO Parse\\Form1.cs [\uB514\uC790\uC778]",
+              "RelativeToolTip": "FBO Parse\\Form1.cs [\uB514\uC790\uC778]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-24T13:00:30.835Z",
-              "EditorCaption": " [Design]"
+              "EditorCaption": " [\uB514\uC790\uC778]"
             },
             {
               "$type": "Document",
@@ -44,7 +44,7 @@
               "RelativeDocumentMoniker": "FBO Parse\\Form1.cs",
               "ToolTip": "E:\\programming\\repos\\FBO-Parse\\FBO Parse\\Form1.cs",
               "RelativeToolTip": "FBO Parse\\Form1.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADIAAAARAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-25T03:03:34.903Z",
               "EditorCaption": ""
