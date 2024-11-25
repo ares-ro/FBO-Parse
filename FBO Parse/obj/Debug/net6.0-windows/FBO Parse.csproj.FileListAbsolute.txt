@@ -1,0 +1,16 @@
+E:\programming\repos\FBO Parse\FBO Parse\bin\Debug\net6.0-windows\FBO Parse.exe
+E:\programming\repos\FBO Parse\FBO Parse\bin\Debug\net6.0-windows\FBO Parse.deps.json
+E:\programming\repos\FBO Parse\FBO Parse\bin\Debug\net6.0-windows\FBO Parse.runtimeconfig.json
+E:\programming\repos\FBO Parse\FBO Parse\bin\Debug\net6.0-windows\FBO Parse.dll
+E:\programming\repos\FBO Parse\FBO Parse\bin\Debug\net6.0-windows\FBO Parse.pdb
+E:\programming\repos\FBO Parse\FBO Parse\obj\Debug\net6.0-windows\FBO_Parse.Form1.resources
+E:\programming\repos\FBO Parse\FBO Parse\obj\Debug\net6.0-windows\FBO Parse.csproj.GenerateResource.cache
+E:\programming\repos\FBO Parse\FBO Parse\obj\Debug\net6.0-windows\FBO Parse.GeneratedMSBuildEditorConfig.editorconfig
+E:\programming\repos\FBO Parse\FBO Parse\obj\Debug\net6.0-windows\FBO Parse.AssemblyInfoInputs.cache
+E:\programming\repos\FBO Parse\FBO Parse\obj\Debug\net6.0-windows\FBO Parse.AssemblyInfo.cs
+E:\programming\repos\FBO Parse\FBO Parse\obj\Debug\net6.0-windows\FBO Parse.csproj.CoreCompileInputs.cache
+E:\programming\repos\FBO Parse\FBO Parse\obj\Debug\net6.0-windows\FBO Parse.dll
+E:\programming\repos\FBO Parse\FBO Parse\obj\Debug\net6.0-windows\refint\FBO Parse.dll
+E:\programming\repos\FBO Parse\FBO Parse\obj\Debug\net6.0-windows\FBO Parse.pdb
+E:\programming\repos\FBO Parse\FBO Parse\obj\Debug\net6.0-windows\FBO Parse.genruntimeconfig.cache
+E:\programming\repos\FBO Parse\FBO Parse\obj\Debug\net6.0-windows\ref\FBO Parse.dll
