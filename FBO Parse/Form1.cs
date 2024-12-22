@@ -12,17 +12,15 @@ namespace FBO_Parse
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string inputData = richTextBox1.Text;
+            string inputData = textBox1.Text;
 
-            ////토큰화 전 유효성 검사
-            //비어있는지 확인
+            //토큰화 전 유효성 검사
             if (inputData == "")
             {
                 MessageBox.Show("수식을 입력하세요.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            //사칙연산 기호와 숫자 외의 다른게 있는지 확인
-            else if (Regex.IsMatch(inputData, @"[^+\-*/0-9]"))
+            else if (Regex.IsMatch(inputData, @"[^+\-*/0-9\.]"))
             {
                 MessageBox.Show("수식에 숫자, 연산자 외의 다른 요소가 존재합니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -30,11 +28,116 @@ namespace FBO_Parse
 
             List<string> tokenList = InputTokenization.Tokenization(inputData);
 
-            ////토큰화 후 유효성 검사
+            //토큰화 후 유효성 검사
+            //숫자 - (반복)(기호 - 숫자) 구조여야 하므로 3이상인 홀수여야 함
+            if (tokenList.Count < 3 | tokenList.Count % 2 == 0)
+            {
+                MessageBox.Show("수식이 잘못되었습니다. 다시 확인해주세요.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            //0번째 먼저 검사
+            if (NumOpeCheck.IsOperator(tokenList[0]))
+            {
+                MessageBox.Show("수식이 잘못되었습니다. 다시 확인해주세요.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            //기호 - 숫자인지 검사
+            for (int i = 1; i < tokenList.Count; i += 2)
+            {
+                if (NumOpeCheck.IsOperator(tokenList[i]) & NumOpeCheck.IsNumber(tokenList[i + 1]))
+                {
+                    continue;
+                }
+                else
+                {
+                    MessageBox.Show("수식이 잘못되었습니다. 다시 확인해주세요.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
 
+            //숫자 유효성 검사
+            for (int i = 0; i < tokenList.Count; i++)
+            {
+                if (NumOpeCheck.IsNumber(tokenList[i]))
+                {
+                    if (decimal.TryParse(tokenList[i], out decimal buffer) == false)
+                    {
+                        MessageBox.Show("잘못된 숫자, 혹은 연산이 불가능한 숫자가 존재합니다. 다시 확인해주세요.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+            }
+
+            //연산 제한 검사
+
+            //연산
+            while (tokenList.Count != 1)
+            {
+ExitRepeat:
+                for (int i = 0; i < tokenList.Count; i++)
+                {
+                    if (NumOpeCheck.IsOperator(tokenList[i]))
+                    {
+                        if (tokenList[i] == "*")
+                        {
+                            decimal buffer = decimal.Parse(tokenList[i - 1]) * decimal.Parse(tokenList[i + 1]);
+                            tokenList[i - 1] = buffer.ToString();
+                            tokenList.RemoveAt(i);
+                            tokenList.RemoveAt(i);
+                            Debug.WriteLine(buffer);
+                            goto ExitRepeat;
+                        }
+                        if (tokenList[i] == "/")
+                        {
+                            decimal buffer = decimal.Parse(tokenList[i - 1]) / decimal.Parse(tokenList[i + 1]);
+                            tokenList[i - 1] = buffer.ToString();
+                            tokenList.RemoveAt(i);
+                            tokenList.RemoveAt(i);
+                            Debug.WriteLine(buffer);
+                            goto ExitRepeat;
+                        }
+                    }
+                }
+                for (int i = 0; i < tokenList.Count; i++)
+                {
+                    if (NumOpeCheck.IsOperator(tokenList[i]))
+                    {
+                        if (tokenList[i] == "+")
+                        {
+                            decimal buffer = decimal.Parse(tokenList[i - 1]) + decimal.Parse(tokenList[i + 1]);
+                            tokenList[i - 1] = buffer.ToString();
+                            tokenList.RemoveAt(i);
+                            tokenList.RemoveAt(i);
+                            Debug.WriteLine(buffer);
+                            goto ExitRepeat;
+                        }
+                        if (NumOpeCheck.IsOperator(tokenList[i]))
+                        {
+                            if (tokenList[i] == "-")
+                            {
+                                decimal buffer = decimal.Parse(tokenList[i - 1]) - decimal.Parse(tokenList[i + 1]);
+                                tokenList[i - 1] = buffer.ToString();
+                                tokenList.RemoveAt(i);
+                                tokenList.RemoveAt(i);
+                                Debug.WriteLine(buffer);
+                                goto ExitRepeat;
+                            }
+                        }
+                    }
+                }
+            }
+            Debug.WriteLine("result: " + tokenList[0]);
+            textBox2.Text = tokenList[0];
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (NumOpeCheck.IsNumber(e.KeyChar.ToString()) == false & NumOpeCheck.IsOperator(e.KeyChar.ToString()) == false & e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
         }
     }
-
     public class InputTokenization
     {
         public static List<string> Tokenization(string inputData)
@@ -61,21 +164,25 @@ namespace FBO_Parse
                     {
                         tokenList.Add(inputDataList[0].ToString());
                         inputDataList.RemoveAt(0);
+                        continue;
                     }
                     if (inputDataList[0] == '-')
                     {
                         tokenList.Add(inputDataList[0].ToString());
                         inputDataList.RemoveAt(0);
+                        continue;
                     }
                     if (inputDataList[0] == '*')
                     {
                         tokenList.Add(inputDataList[0].ToString());
                         inputDataList.RemoveAt(0);
+                        continue;
                     }
                     if (inputDataList[0] == '/')
                     {
                         tokenList.Add(inputDataList[0].ToString());
                         inputDataList.RemoveAt(0);
+                        continue;
                     }
                 }
                 //숫자인 경우
@@ -83,6 +190,7 @@ namespace FBO_Parse
                 {
                     tokenNumberBuffer += inputDataList[0].ToString();
                     inputDataList.RemoveAt(0);
+                    continue;
                 }
             }
 
@@ -94,6 +202,17 @@ namespace FBO_Parse
             }
 
             return tokenList;
+        }
+    }
+    public class NumOpeCheck
+    {
+        public static bool IsNumber(string checkData)
+        {
+            return Regex.IsMatch(checkData, @"[0-9]");
+        }
+        public static bool IsOperator(string checkData)
+        {
+            return Regex.IsMatch(checkData, @"[+\-*/]");
         }
     }
 }
